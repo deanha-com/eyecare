@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<title>EYE CARE+</title>
+
+		<link rel="stylesheet" href="./themes/alertify.core.css" />
+		<link rel="stylesheet" href="./themes/alertify.default.css" id="toggleCSS" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+		<link rel="shortcut icon" href="../img/faviconeye.ico">
+		<link rel="icon" type="image/png" href="./img/faviconeye.png">
+		<link rel="apple-touch-icon" href="./img/faviconeye.png" sizes="120x120">
+		<link rel="apple-touch-startup-image" href="./img/faviconeye.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+		<link rel="apple-touch-startup-image" href="./img/faviconeye.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="lib/alertify.min.js"></script>
+		<script src="lib/alertify.js"></script>
+		<script src="lib/disable-pull-to-refresh.js"></script>
+		<script src="lib/jquery.storageapi.js"></script>
+
+
+	</head>
+	<body class="disable-select">
+		<audio id="sound" src="lib/alert.mp3" preload="auto"></audio>
+		<input id="disable-pull-to-refresh" type="hidden"></input>
+		<nav><label id="about" class='label label-default'>About</label> <label id="info" class='label label-default'>Info</label> <label id="faq" class='label label-default'>FAQ</label>
+		</nav>
+		<div align="center" class="container">
+			<div class="row">
+			    <div align="center" class="col-md-6 col-md-offset-3"><br/>
+					<!-- <img src="https://irp-cdn.multiscreensite.com/6077b6ec/dms3rep/multi/mobile/eye-icon-322x202.png" alt="" width="120px"> -->
+					<h1 class="pwhite"><em>EYE CARE+</em></h1>
+					<p id="did"></p>
+					<p id="pinfo" class="pwhite">AppVersion v.1.0<br/>Created by Dean Ha<br/>Email: hello@deanha.com</p>
+					<p id="pabout" class="pwhite" align="left">
+						<b><em>EYE CARE+</em></b> is a progressive web application created to help reduce eye strains. We often stare at our mobile or desktop screens for a long time whithout blinking, this causes dry eyes and straining. The app is designed to alert at a set interval to suggest you should take a short break or flex your eye muscles. On mobile devices it is set to 5 minutes, and on desktops it is set to 20 minutes.<br/><br/>
+
+						Please do not click the <u>'prevent this page from creating additional dialogs'</u> as it will stop the application from running. However, if you did so by accident, then you will need to exit and restart the app.</p>
+					<!-- <label>Project start date: 10th Feb 2016 @ 8.40pm > Finished on 11th Feb 2016 @ 5.40pm ></label>
+					<label>Duration 9 hours</label> -->
+					
+				</div>
+			</div>
+			<!-- <img src="http://www.almiranatural.com/wp-content/uploads/2014/11/How-to-get-beautiful-eyes.jpg" alt="..." class="img-rounded"> --><br/><br/>
+			<button type="button" class="btn btn-primary btn-lg" id="startButton" onclick="start()">Save my vision</button><br/><br/><br/><br/>
+			<footer>
+				<div id="countup">
+				<!-- <label id="days" "timeRefDays">00</label>days: --><span><label id="hours" "timeRefHours">00</label>:<label id="minutes" class="timeRefMinutes">00</label>:<label id="seconds" class="timeRefSeconds">00</label></span></div>
+				</div>
+			</footer>
+			<script>
+			storage=$.sessionStorage;
+			storage.set('foo',Date());
+			storage.get('foo');
+
+			if (storage.isSet('foo') == true){
+				document.write('<p align="center" class="pwhite">'+storage.get('foo'))+'</p>';}
+				else{
+					document.write("noooo");
+			};
+
+			</script>
+		</div>
+	</body>
+
+	
+	<script>
+
+	    $("#about").click(function(){
+	        $(pabout).toggle();
+        	$("#pabout").delay(35000);
+	        $("#pabout").slideUp();
+	    });
+	    $("#info").click(function(){
+        	$(pinfo).toggle();
+        	$("#pinfo").delay(15000);
+        	$("#pinfo").slideUp();
+    	});
+
+		//** CLOCK ESLAPSED TIMER
+		window.onload=function() {
+		//upTime('jan,01,2014,00:00:00'); //** Month,Day,Year,Hour,Minute,Second
+		var currentdate = new Date(); 
+		upTime(currentdate); //** Change this line!
+		}
+		function upTime(countTo) {
+			now = new Date();
+			countTo = new Date(countTo);
+			difference = (now-countTo);
+
+			days=Math.floor(difference/(60*60*1000*24)*1);
+			hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
+			mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+			secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+
+			// document.getElementById('days').firstChild.nodeValue = pad(days);
+			document.getElementById('hours').firstChild.nodeValue = pad(hours);
+			document.getElementById('minutes').firstChild.nodeValue = pad(mins);
+			document.getElementById('seconds').firstChild.nodeValue = pad(secs);
+
+		    function pad(val){
+		        var valString = val + "";
+			        if(valString.length < 2){
+			            return "0" + valString;
+			        }
+			        else{
+			            return valString;
+			        }
+			}
+			clearTimeout(upTime.to);
+			upTime.to=setTimeout(function(){
+				upTime(countTo);
+			},1000);
+		}
+
+		window.onbeforeunload = confirmExit;
+		function confirmExit(){
+		return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost. Are you sure you want to exit this page?";
+		}
+
+		// ONLOAD DIAGLOGE
+		$(document).ready(function() {
+			// alertify.alert("Timer Started", function (e) {
+	  //   	if (e) {
+	        $(pabout).hide();
+	       	$(pinfo).hide();
+	       	if (storage.isSet('foo') == true){
+				storage.remove('foo');
+				start();
+			}
+				else {
+					start();
+			};
+	
+	  //   	}
+	  //   	else {
+	  //       // user clicked "cancel"
+			//     }
+			// });
+
+
+		});
+
+		// ARRAY OF DIFFERENT QUOTES / TIPS
+		var r_text = new Array ();
+			r_text[0] = "Remember the 20-20-20 rule: every 20 minutes, look 20 feet away (six metres) for 20 seconds to give your eye muscles a break and help increase the rate of blinking.";
+			r_text[1] = "Blink regularly. When focusing on a screen your reflexes will slow down, tear production will reduce, and you will blink less, causing dry and uncomfortable eyes.";
+			r_text[2] = "Make sure your workstation is set up comfortably; avoid poor posture which can lead to neck, back, arm or other aches.";
+			r_text[3] = "Adjusting your computer’s display settings can help reduce eye strain and fatigue.";
+			r_text[4] = "Try and position your monitor so that you do not get distracting reflections (e.g. from a window).";
+			r_text[5] = "Improper posture while working on your computer also adds to the problem.";
+			r_text[6] = "Make sure that the top of the monitor is at a level at or slightly below your horizontal eye level.";
+			r_text[7] = "Make sure the brightness is the same as the surroundings and adjust the text size and contrast so that it is comfortable to read.";
+			r_text[8] = "Reducing the amount of blue colours on your screen can also help.";
+		
+
+		// var i = Math.floor(7*Math.random());
+		var i = Math.floor(Math.random() * r_text.length);
+
+		// SETING MODE TIMER
+		var mobileMode = 5 * (60*1000); // in minutes
+		var desktopMode = 20 * (60*1000);
+		//
+		if ($(window).width() < 960) {
+			  var mode = mobileMode;
+		}
+		else {
+			mode = desktopMode;
+			$('body').css('background','url("http://camend.com/ecm/img/sky_hd_wallpaper.jpg") no-repeat scroll');
+		}
+		var activeMode
+		if (mode == mobileMode){
+			activeMode = "MOBILE";
+		}
+		else {
+			activeMode = "DESKTOP";
+		}
+		$( "#did" ).html( "<span class='label label-info'>"+ activeMode +"</span>" );
+
+
+
+		// TIMER FUNCTION
+		function start(){
+			timer = setTimeout(function() {
+				// var i = Math.floor(Math.random() * r_text.length);
+				var i = Math.floor(7*Math.random());
+				reset();
+				// alertify.alert(r_text[Math.floor(Math.random() * r_text.length)]);
+			    // alertify.log(r_text[Math.floor(Math.random() * r_text.length)], "", 0);
+			    // alertify.alert(r_text[i]);
+
+				alertify.confirm(r_text[i], function (e) {
+				    if (e) {
+				        alertify.log(r_text[i], "success", 40000);
+				        start();
+				    }
+				    else {
+				    	// alertify.custom = alertify.extend("custom");
+				    	// alertify.custom(r_text[i], "", 50000);
+				    	alertify.log(r_text[i], "error", 45000);
+				        clearTimeout(timer);
+				        $("#startButton").fadeIn( "slow", function(){$( this ).removeClass( "disabled" );});
+				    }
+				});
+				document.getElementById('sound').play();
+				alert('EYE CARE+ \n\nMinimizing eye strain for a better vision!');
+			    // alertify.log(r_text[i], "", 0);
+			}, mode);//5*(60 * 1000)); // 60 * 1000 milsec = 60sec = 1min
+		};
+
+		//BUTTON FUNCTION
+		$("#startButton").hide();
+		$( "#startButton" ).click(function() {
+		// $( this ).toggleClass( "disabled" ).fadeOut("slow", function(){});
+		    $( this ).addClass( "disabled" ).fadeOut("slow", function(){});
+		    clearTimeout(timer);
+		    start();
+		});
+
+
+		// RESET FUNCTION
+		function reset() {
+			$("#toggleCSS").attr("href", "./themes/alertify.default.css");
+			alertify.set({
+				labels : {
+					ok     : "OK",
+					cancel : "Cancel"
+				},
+				delay : 5000,
+				buttonReverse : false,
+				buttonFocus   : "ok"
+			});
+		}
+
+
+		// GOOGLE ANALYTICS
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-73769226-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	
+	<!-- CSS STYLEING -->
+	<style>
+	
+		label, h3, span, nav {
+			color: white;
+		}
+
+		.pwhite {
+			color: white;
+			font-size: :10px;
+		}
+
+		nav {
+			padding: 10px 15px;
+		}
+
+		.alertify-log-custom {
+			background: blue;
+		}
+	
+		body {
+			background: url("http://41.media.tumblr.com/794bce60e0032a08df6256b108f9c4b2/tumblr_ng52d97UC71u57bnlo1_1280.jpg") no-repeat scroll;
+	    	/*background-repeat: repeat;*/
+			background-size: 100% 100%;
+            background-size:cover;
+            background-color:black;
+			}
+
+		.disable-select {
+			-webkit-user-select: none;  
+			-moz-user-select: none;    
+			-ms-user-select: none;      
+			user-select: none;
+		}
+		/*NO REPEAT COVER BG*/
+		/*  background: url('http://i.stack.imgur.com/IehB7.png') no-repeat scroll;
+            background-size: 100% 100%;
+            background-size:cover;
+            background-color:black;*/
+		/*http://41.media.tumblr.com/794bce60e0032a08df6256b108f9c4b2/tumblr_ng52d97UC71u57bnlo1_1280.jpg*/
+	    /*http://webneel.com/wallpaper/sites/default/files/images/04-2013/15-beach-sea-photography.jpg*/
+	    /*https://cdn.creativelive.com/fit/https%3A%2F%2Fcdn.creativelive.com%2Fagc%2Fcourses%2F5842-1.jpg/1600*/
+	    /*http://www.siwallpaper.com/wp-content/uploads/2015/09/sky_hd_wallpaper.jpg*/
+	    /*http://www.bearvalleymusicfestival.org/wp-content/themes/banda/app/assets/css/images/light-linen-bg-tile.jpg*/
+	</style>
+</html>
+
+<!--
+// RESOURCES
+
+http://fabien-d.github.io/alertify.js/
+https://github.com/julien-maurel/jQuery-Storage-API
+https://www.kirupa.com/html5/picking_random_item_from_array.htm
+http://stackoverflow.com/questions/13902365/generate-random-number-within-range-without-repeating-numbers-in-javascript
+http://www.w3schools.com/js/tryit.asp?filename=tryjs_settimeout2
+http://getbootstrap.com/css/#buttons
+http://lookafteryoureyes.org/eye-care/computers-and-other-screens/
+http://www.specsavers.co.uk/eye-health/computer-eye-strain-symptoms-and-solutions
+https://www.google.co.uk/search?q=seamless+wallpaper&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjVzv-ix-7KAhVnKpoKHZgGAKsQ_AUIBygB&biw=1366&bih=655#q=landscape+photography&tbs=isz:lt,islt:xga&tbm=isch&imgrc=ymBO0vPNaBEebM%3A
+http://stackoverflow.com/questions/7172745/iphone-website-version-recomend-working-in-px-or-in
+-->
