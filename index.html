@@ -62,15 +62,15 @@
 			// ***************************************************************************************
 			//		SESSION STOARAGE API - DISABLED**
 			// ***************************************************************************************
-			// storage=$.sessionStorage;
-			// storage.set('foo',Date());
-			// storage.get('foo');
+			storage=$.sessionStorage;
+			storage.set('foo',Date());
+			storage.get('foo');
 
-			// if (storage.isSet('foo') == true){
-			// 	document.write('<p align="center" class="pwhite">'+storage.get('foo'))+'</p>';}
-			// 	else{
-			// 		document.write("noooo");
-			// };
+			if (storage.isSet('foo') == true){
+				document.write('<p align="center" class="pwhite">'+storage.get('foo'))+'</p>';}
+				else{
+					document.write("noooo");
+			};
 			</script>
 		</div>
 	</body>
@@ -166,7 +166,7 @@
 
 		// SETING MODE TIMER
 		var mobileMode = 5 * (60*1000); // in minutes
-		var desktopMode = 20 * (60*1000);
+		var desktopMode = 19 * (60*1000);
 		//
 		if ($(window).width() < 960) {
 			  var mode = mobileMode;
@@ -295,7 +295,7 @@
 			user-select: none;
 		}
 
-		/*http://41.media.tumblr.com/794bce60e0032a08df6256b108f9c4b2/tumblr_ng52d97UC71u57bnlo1_1280.jpg*/
+			/*http://41.media.tumblr.com/794bce60e0032a08df6256b108f9c4b2/tumblr_ng52d97UC71u57bnlo1_1280.jpg*/
 	    /*http://webneel.com/wallpaper/sites/default/files/images/04-2013/15-beach-sea-photography.jpg*/
 	    /*https://cdn.creativelive.com/fit/https%3A%2F%2Fcdn.creativelive.com%2Fagc%2Fcourses%2F5842-1.jpg/1600*/
 	    /*http://www.siwallpaper.com/wp-content/uploads/2015/09/sky_hd_wallpaper.jpg*/
