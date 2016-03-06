@@ -10,7 +10,7 @@
 
 		<link rel="stylesheet" href="./themes/alertify.core.css" />
 		<link rel="stylesheet" href="./themes/alertify.default.css" id="toggleCSS" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 
 		<link rel="shortcut icon" href="../img/faviconeye.ico">
@@ -34,44 +34,52 @@
 		</nav>
 		<div align="center" class="container">
 			<div class="row">
-			    <div align="center" class="col-md-6 col-md-offset-3"><br/>
-					<!-- <img src="https://irp-cdn.multiscreensite.com/6077b6ec/dms3rep/multi/mobile/eye-icon-322x202.png" alt="" width="120px"> -->
+			    <div align="center" class="col-md-6 col-md-offset-3"><br/><br/><br/><br/>
+					<img src="./img/logo.png" alt="" width="120px">
 					<h1 class="pwhite"><em>EYE CARE+</em></h1>
 					<p id="did"></p>
 					<p id="pinfo" class="pwhite">AppVersion v.1.0<br/>Created by Dean Ha<br/>Email: hello@deanha.com</p>
 					<p id="pabout" class="pwhite" align="left">
-						<b><em>EYE CARE+</em></b> is a progressive web application created to help reduce eye strains. We often stare at our mobile or desktop screens for a long time whithout blinking, this causes dry eyes and straining. The app is designed to alert at a set interval to suggest you should take a short break or flex your eye muscles. On mobile devices it is set to 5 minutes, and on desktops it is set to 20 minutes.<br/><br/>
+						<b><em>EYE CARE+</em></b> is a progressive web application created to help reduce eye strains. We often stare at our mobile or desktop screens for a long time without blinking, this causes dry eyes and straining. The app is designed to alert at a set interval to suggest you should take a short break or flex your eye muscles. On mobile devices it is set to 5 minutes, and on desktops it is set to 20 minutes.<br/><br/>
 
-						Please do not click the <u>'prevent this page from creating additional dialogs'</u> as it will stop the application from running. However, if you did so by accident, then you will need to exit and restart the app.</p>
-					<!-- <label>Project start date: 10th Feb 2016 @ 8.40pm > Finished on 11th Feb 2016 @ 5.40pm ></label>
-					<label>Duration 9 hours</label> -->
-					
+						Please do not click the <u>'prevent this page from creating additional dialogs'</u> as it will stop the application from running. However, if you did so by accident, then you will need to exit and restart the app.</p>					
 				</div>
 			</div>
-			<!-- <img src="http://www.almiranatural.com/wp-content/uploads/2014/11/How-to-get-beautiful-eyes.jpg" alt="..." class="img-rounded"> --><br/><br/>
+			<br/><br/>
 			<button type="button" class="btn btn-primary btn-lg" id="startButton" onclick="start()">Save my vision</button><br/><br/><br/><br/>
+			
 			<footer>
 				<div id="countup">
 				<!-- <label id="days" "timeRefDays">00</label>days: --><span><label id="hours" "timeRefHours">00</label>:<label id="minutes" class="timeRefMinutes">00</label>:<label id="seconds" class="timeRefSeconds">00</label></span></div>
 				</div>
 			</footer>
+
+
+
+
+
 			<script>
-			storage=$.sessionStorage;
-			storage.set('foo',Date());
-			storage.get('foo');
+			// ***************************************************************************************
+			//		SESSION STOARAGE API - DISABLED**
+			// ***************************************************************************************
+			// storage=$.sessionStorage;
+			// storage.set('foo',Date());
+			// storage.get('foo');
 
-			if (storage.isSet('foo') == true){
-				document.write('<p align="center" class="pwhite">'+storage.get('foo'))+'</p>';}
-				else{
-					document.write("noooo");
-			};
-
+			// if (storage.isSet('foo') == true){
+			// 	document.write('<p align="center" class="pwhite">'+storage.get('foo'))+'</p>';}
+			// 	else{
+			// 		document.write("noooo");
+			// };
 			</script>
 		</div>
 	</body>
 
-	
+
 	<script>
+	// ***************************************************************************************
+	//		MAIN JS
+	// ***************************************************************************************
 
 	    $("#about").click(function(){
 	        $(pabout).toggle();
@@ -122,12 +130,12 @@
 
 		window.onbeforeunload = confirmExit;
 		function confirmExit(){
-		return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost. Are you sure you want to exit this page?";
+		return "You have attempted to leave this page. If you leave now the app won't be able alert you anymore. Are you sure you want to exit this page?";
 		}
 
-		// ONLOAD DIAGLOGE
+		// ONLOAD DIAGLOG
 		$(document).ready(function() {
-			// alertify.alert("Timer Started", function (e) {
+		// alertify.alert("Timer Started", function (e) {
 	  //   	if (e) {
 	        $(pabout).hide();
 	       	$(pinfo).hide();
@@ -138,15 +146,7 @@
 				else {
 					start();
 			};
-	
-	  //   	}
-	  //   	else {
-	  //       // user clicked "cancel"
-			//     }
-			// });
-
-
-		});
+	  });
 
 		// ARRAY OF DIFFERENT QUOTES / TIPS
 		var r_text = new Array ();
@@ -173,7 +173,7 @@
 		}
 		else {
 			mode = desktopMode;
-			$('body').css('background','url("http://camend.com/ecm/img/sky_hd_wallpaper.jpg") no-repeat scroll');
+			// $('body').css('background','url("./img/desktop-bg.jpg") no-repeat scroll');
 		}
 		var activeMode
 		if (mode == mobileMode){
@@ -184,8 +184,6 @@
 		}
 		$( "#did" ).html( "<span class='label label-info'>"+ activeMode +"</span>" );
 
-
-
 		// TIMER FUNCTION
 		function start(){
 			timer = setTimeout(function() {
@@ -193,8 +191,8 @@
 				var i = Math.floor(7*Math.random());
 				reset();
 				// alertify.alert(r_text[Math.floor(Math.random() * r_text.length)]);
-			    // alertify.log(r_text[Math.floor(Math.random() * r_text.length)], "", 0);
-			    // alertify.alert(r_text[i]);
+			  // alertify.log(r_text[Math.floor(Math.random() * r_text.length)], "", 0);
+			  // alertify.alert(r_text[i]);
 
 				alertify.confirm(r_text[i], function (e) {
 				    if (e) {
@@ -212,7 +210,7 @@
 				document.getElementById('sound').play();
 				alert('EYE CARE+ \n\nMinimizing eye strain for a better vision!');
 			    // alertify.log(r_text[i], "", 0);
-			}, mode);//5*(60 * 1000)); // 60 * 1000 milsec = 60sec = 1min
+			}, mode);
 		};
 
 		//BUTTON FUNCTION
@@ -223,7 +221,6 @@
 		    clearTimeout(timer);
 		    start();
 		});
-
 
 		// RESET FUNCTION
 		function reset() {
@@ -270,12 +267,26 @@
 		}
 	
 		body {
-			background: url("http://41.media.tumblr.com/794bce60e0032a08df6256b108f9c4b2/tumblr_ng52d97UC71u57bnlo1_1280.jpg") no-repeat scroll;
-	    	/*background-repeat: repeat;*/
-			background-size: 100% 100%;
-            background-size:cover;
-            background-color:black;
-			}
+			background: url("./img/desktop-bg.jpg");
+		  background-position: center center;
+	    background-repeat: no-repeat;
+			background-attachment: fixed;
+      background-size:cover;
+      background-color:black;
+
+}
+
+		@media screen and (max-width: 480px) {
+    body {
+    	background: url("./img/mobile-bg.jpg");
+    	background-position: center center;
+	    background-repeat: no-repeat;
+			background-attachment: fixed;
+      background-size:cover;
+      background-color:black;
+    }
+}
+
 
 		.disable-select {
 			-webkit-user-select: none;  
@@ -283,11 +294,7 @@
 			-ms-user-select: none;      
 			user-select: none;
 		}
-		/*NO REPEAT COVER BG*/
-		/*  background: url('http://i.stack.imgur.com/IehB7.png') no-repeat scroll;
-            background-size: 100% 100%;
-            background-size:cover;
-            background-color:black;*/
+
 		/*http://41.media.tumblr.com/794bce60e0032a08df6256b108f9c4b2/tumblr_ng52d97UC71u57bnlo1_1280.jpg*/
 	    /*http://webneel.com/wallpaper/sites/default/files/images/04-2013/15-beach-sea-photography.jpg*/
 	    /*https://cdn.creativelive.com/fit/https%3A%2F%2Fcdn.creativelive.com%2Fagc%2Fcourses%2F5842-1.jpg/1600*/
