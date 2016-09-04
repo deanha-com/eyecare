@@ -81,15 +81,19 @@
 	//		MAIN JS
 	// ***************************************************************************************
 
-	    $("#about").click(function(){
-	        $(pabout).toggle();
-        	$("#pabout").delay(35000);
-	        $("#pabout").slideUp();
-	    });
-	    $("#info").click(function(){
-        	$(pinfo).toggle();
-        	$("#pinfo").delay(15000);
-        	$("#pinfo").slideUp();
+	$("#about").click(function(){
+		$(pabout).toggle();
+        	$("#pabout").addClass('active');
+	});
+	
+	$("#info").click(function(){
+		$(pinfo).toggle();
+		$("#pinfo").addClass('active');
+    	});
+    	
+    	$("#faq").click(function(){
+        	$(pfaq).toggle();
+        	$("#pfaq").addClass('active');
     	});
 
 		//** CLOCK ESLAPSED TIMER
@@ -139,6 +143,7 @@
 	  //   	if (e) {
 	        $(pabout).hide();
 	       	$(pinfo).hide();
+	       	$(pfaq).hide();
 	       	if (storage.isSet('foo') == true){
 				storage.remove('foo');
 				start();
@@ -249,6 +254,16 @@
 	
 	<!-- CSS STYLEING -->
 	<style>
+		.active {
+			left: 0;
+			right: 0;
+			background: #393939;
+			padding: 25px;
+			position: absolute;
+			margin: 0 auto;
+			box-sizing: border-box;
+			z-index: 99;
+		}
 	
 		label, h3, span, nav {
 			color: white;
