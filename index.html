@@ -38,13 +38,13 @@
 					<img src="./img/logo.png" alt="" width="120px">
 					<h1 class="pwhite"><em style="color:#01ade7">EYE CARE+ v1.2</em></h1>
 					<p id="did"></p>
-					<p id="pinfo" class="pwhite">AppVersion v.1.0<br/>Created by Dean Ha<br/>Email: hello@deanha.com</p>
-					<p id="pabout" class="pwhite" align="left">
+					<p id="app-info" class="pwhite inactive">AppVersion v.1.0<br/>Created by Dean Ha<br/>Email: hello@deanha.com</p>
+					<p id="app-about" class="pwhite inactive" align="left">
 						<b><em>EYE CARE+</em></b> is a progressive web application created to help reduce eye strains. We often stare at our mobile or desktop screens for a long time without blinking, this causes dry eyes and straining. The app is designed to alert at a set interval to suggest you should take a short break or flex your eye muscles. On mobile devices it is set to 5 minutes, and on desktops it is set to 20 minutes.<br/><br/>
 
 						Please do not click the <u>'prevent this page from creating additional dialogs'</u> as it will stop the application from running. However, if you did so by accident, then you will need to exit and restart the app.</p>
 						
-					<p id="pfaq" class="pwhite" align="left">
+					<p id="app-faq" class="pwhite inactive" align="left">
 						Q. Why?<br/>
 						A. Because..<br/><br/>
 						Q. For whom? <br/>
@@ -89,18 +89,18 @@
 	// ***************************************************************************************
 
 	$("#about").click(function(){
-		$(pabout).toggle();
-        	$("#pabout").addClass('active');
+		$("#app-about").toggle();
+        	$("#app-about").addClass('active');
 	});
 	
 	$("#info").click(function(){
-		$(pinfo).toggle();
-		$("#pinfo").addClass('active');
+		$("#app-info").toggle();
+		$("#app-info").addClass('active');
     	});
     	
     	$("#faq").click(function(){
-        	$(pfaq).toggle();
-        	$("#pfaq").addClass('active');
+        	$("#app-faq").toggle();
+        	$("#app-faq").addClass('active');
     	});
 
 		//** CLOCK ESLAPSED TIMER
@@ -148,9 +148,9 @@
 		$(document).ready(function() {
 		// alertify.alert("Timer Started", function (e) {
 	  //   	if (e) {
-	        $(pabout).hide();
-	       	$(pinfo).hide();
-	       	$(pfaq).hide();
+	        $("#app-about").hide();
+	       	$("#app-info").hide();
+	       	$("#app-faq").hide();
 	       	if (storage.isSet('foo') == true){
 				storage.remove('foo');
 				start();
@@ -261,7 +261,30 @@
 	
 	<!-- CSS STYLEING -->
 	<style>
+
+		body {
+			background: url("./img/desktop-bg.jpg");
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size:cover;
+			background-color:black;
+
+		}
+
+		body nav label {
+			background-color: #525358 !important;
+			padding: 5px 15px !important;
+			border-radius: 0 !important;
+
+		}
+
+		.inactive {
+			display: none;
+		}
+		
 		.active {
+			display: block;
 			left: 0;
 			right: 0;
 			background: #393939;
@@ -270,6 +293,9 @@
 			margin: 0 auto;
 			box-sizing: border-box;
 			z-index: 99;
+			margin-left: 10px;
+			margin-right: 10px;
+			opacity: 0.9;
 		}
 	
 		label, h3, span, nav {
@@ -289,34 +315,25 @@
 			background: blue;
 		}
 	
-		body {
-			background: url("./img/desktop-bg.jpg");
-		  background-position: center center;
-	    background-repeat: no-repeat;
-			background-attachment: fixed;
-      background-size:cover;
-      background-color:black;
-
-}
-
-		@media screen and (max-width: 480px) {
-    body {
-    	background: url("./img/mobile-bg.jpg");
-    	background-position: center center;
-	    background-repeat: no-repeat;
-			background-attachment: fixed;
-      background-size:cover;
-      background-color:black;
-    }
-}
-
-
 		.disable-select {
 			-webkit-user-select: none;  
 			-moz-user-select: none;    
 			-ms-user-select: none;      
 			user-select: none;
 		}
+		
+		@media screen and (max-width: 480px) {
+			body {
+				background: url("./img/mobile-bg.jpg");
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size:cover;
+				background-color:black;
+			}
+		}
+
+
 
 			/*http://41.media.tumblr.com/794bce60e0032a08df6256b108f9c4b2/tumblr_ng52d97UC71u57bnlo1_1280.jpg*/
 	    /*http://webneel.com/wallpaper/sites/default/files/images/04-2013/15-beach-sea-photography.jpg*/

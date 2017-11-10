@@ -1,0 +1,70 @@
+<!-- 
+ +-+-+-+-+-+-+-+-+-+-+
+ |D|E|A|N|H|A|.|C|O|M|
+ +-+-+-+-+-+-+-+-+-+-+
+     http://deanha.com
+
+ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ 
+||D |||E |||A |||N |||H |||A |||. |||C |||O |||M ||
+||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||
+|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Timer</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+
+<button id="startT">START</button><button id="tStamp">TIME</button><button id="endT">END</button><br/>
+<span id="start">START: </span><br/>
+<span id="log">TIME</span><br/>
+<span id="end">END: </span><br/>
+
+</body>
+</html>
+
+<script>
+
+window.onbeforeunload = confirmExit;
+		function confirmExit(){
+		return "You have attempted to leave this page. If you leave now the app won't be able alert you anymore. Are you sure you want to exit this page?";
+		}
+
+	function timeStamp() {
+		var d = new Date();
+		$('#log').append('<br/>'+ d + '<br/>');
+	}
+
+	$('body').css('background','#666');
+
+$('#startT').on('click', function (){
+		var d = new Date();
+		$('#start').append('<br/>'+ d + '<br/>');
+		$('#startT').fadeOut();
+	}
+);
+
+$('#endT').on('click', function (){
+		var d = new Date();
+		$('#end').append('<br/>'+ d + '<br/>');
+		$('#endT').fadeOut();
+	}
+);
+
+
+$('#tStamp').on('click', function (){
+		var d = new Date();
+		$('#log').append('<br/>'+ d);
+	}
+);
+
+</script>
+<style type="text/css" media="screen">
+	body {
+		background: #444;
+	}
+</style>
