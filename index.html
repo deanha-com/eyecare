@@ -30,21 +30,25 @@
 	<body class="disable-select">
 		<audio id="sound" src="lib/alert.mp3" preload="auto"></audio>
 		<input id="disable-pull-to-refresh" type="hidden"></input>
-		<nav><label id="about" class='label label-default'>About</label> <label id="info" class='label label-default'>Info</label> <label id="faq" class='label label-default'>FAQ</label>
+		<nav>
+			<label id="about" class='label label-default'>About</label>
+			<label id="info" class='label label-default'>Info</label>
+			<label id="faq" class='label label-default'>FAQ</label>
 		</nav>
+
 		<div align="center" class="container">
 			<div class="row">
 			    <div align="center" class="col-md-6 col-md-offset-3"><br/><br/><br/><br/>
 					<img src="./img/logo.png" alt="" width="120px">
 					<h1 class="pwhite"><em style="color:#01ade7">EYE CARE+ v1.2</em></h1>
 					<p id="did"></p>
-					<p id="app-info" class="pwhite inactive">AppVersion v.1.0<br/>Created by Dean Ha<br/>Email: hello@deanha.com</p>
-					<p id="app-about" class="pwhite inactive" align="left">
+					<p id="app-info" class="pwhite inactive apptext">AppVersion v.1.0<br/>Created by Dean Ha<br/>Email: hello@deanha.com</p>
+					<p id="app-about" class="pwhite inactive apptext" align="left">
 						<b><em>EYE CARE+</em></b> is a progressive web application created to help reduce eye strains. We often stare at our mobile or desktop screens for a long time without blinking, this causes dry eyes and straining. The app is designed to alert at a set interval to suggest you should take a short break or flex your eye muscles. On mobile devices it is set to 5 minutes, and on desktops it is set to 20 minutes.<br/><br/>
 
 						Please do not click the <u>'prevent this page from creating additional dialogs'</u> as it will stop the application from running. However, if you did so by accident, then you will need to exit and restart the app.</p>
 						
-					<p id="app-faq" class="pwhite inactive" align="left">
+					<p id="app-faq" class="pwhite inactive apptext" align="left">
 						Q. Why?<br/>
 						A. Because..<br/><br/>
 						Q. For whom? <br/>
@@ -88,20 +92,13 @@
 	//		MAIN JS
 	// ***************************************************************************************
 
-	$("#about").click(function(){
-		$("#app-about").toggle();
-        	$("#app-about").addClass('active');
-	});
+	jQuery('nav label').click(function(){
+
+		// console.log(this.id);		
+		$(".apptext").removeClass('active').hide();
+		$("#app-"+this.id).toggle().addClass('active');
+	})
 	
-	$("#info").click(function(){
-		$("#app-info").toggle();
-		$("#app-info").addClass('active');
-    	});
-    	
-    	$("#faq").click(function(){
-        	$("#app-faq").toggle();
-        	$("#app-faq").addClass('active');
-    	});
 
 		//** CLOCK ESLAPSED TIMER
 		window.onload=function() {
