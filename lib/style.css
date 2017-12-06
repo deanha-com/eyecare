@@ -1,82 +1,90 @@
-		.active {
-			left: 0;
-			right: 0;
-			background: #393939;
-			padding: 25px;
-			position: absolute;
-			margin: 0 auto;
-			box-sizing: border-box;
-			z-index: 99;
-			display: block;
-		}
-	
-		label, h3, span, nav {
-			color: white;
-		}
-
-		.pwhite {
-			color: white;
-			font-size: :10px;
-		}
-
-		nav {
-			padding: 10px 15px;
-		}
-
-		.alertify-log-custom {
-			background: blue;
-		}
-	
-		body {
-			background: url("./img/desktop-bg.jpg");
-		  background-position: center center;
-	    background-repeat: no-repeat;
-			background-attachment: fixed;
-      background-size:cover;
-      background-color:black;
-
+.active {
+	left: 0;
+	right: 0;
+	background: #393939;
+	padding: 25px;
+	position: absolute;
+	margin: 0 auto;
+	box-sizing: border-box;
+	z-index: 99;
+	display: block;
 }
 
-		@media screen and (max-width: 480px) {
-    body {
-    	background: url("./img/mobile-bg.jpg");
-    	background-position: center center;
-	    background-repeat: no-repeat;
-			background-attachment: fixed;
-      background-size:cover;
-      background-color:black;
-    }
+label, h3, span, nav {
+	color: white;
+}
+
+.pwhite {
+	color: white;
+	font-size: 10px;
+}
+
+nav {
+	padding: 10px 15px;
+}
+
+.alertify-log-custom {
+	background: blue;
+}
+
+body {
+	background: url("./img/desktop-bg.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: black;
+}
+
+@media screen and (max-width: 480px) {
+	body {
+		background: url("./img/mobile-bg.jpg");
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		background-color: black;
+	}
+}
+
+.disable-select {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 
-		.disable-select {
-			-webkit-user-select: none;  
-			-moz-user-select: none;    
-			-ms-user-select: none;      
-			user-select: none;
-		}
+/* *******************************************************************************
+ * Custom Alertify
+ *********************************************************************************
+.alertify-log-custom {
+	background: blue;
+}
+body {
+	background-image: url("http://www.bearvalleymusicfestival.org/wp-content/themes/banda/app/assets/css/images/light-linen-bg-tile.jpg");
+	background-repeat: repeat;
+} 
+
+********************************************************************************/
 
 
-		/* .alertify-log-custom {
-			background: blue;
-		}
-		body {
+/* *******************************************************************************
+ * NO REPEAT COVER BG
+ *********************************************************************************
+background: url('http://i.stack.imgur.com/IehB7.png') no-repeat scroll;
+background-size: 100% 100%;
+background-size:cover;
+background-color:black;
 
-			background-image: url("http://www.bearvalleymusicfestival.org/wp-content/themes/banda/app/assets/css/images/light-linen-bg-tile.jpg");
-			background-repeat: repeat;
-		} */
-		/*NO REPEAT COVER BG*/
-	  /*  background: url('http://i.stack.imgur.com/IehB7.png') no-repeat scroll;
-	        background-size: 100% 100%;
-	         background-size:cover;
-	         background-color:black;*/
+http://webneel.com/wallpaper/sites/default/files/images/04-2013/15-beach-sea-photography.jpg
+https://cdn.creativelive.com/fit/https%3A%2F%2Fcdn.creativelive.com%2Fagc%2Fcourses%2F5842-1.jpg/1600
+http://www.siwallpaper.com/wp-content/uploads/2015/09/sky_hd_wallpaper.jpg
 
-	    /*http://webneel.com/wallpaper/sites/default/files/images/04-2013/15-beach-sea-photography.jpg*/
-	    /*https://cdn.creativelive.com/fit/https%3A%2F%2Fcdn.creativelive.com%2Fagc%2Fcourses%2F5842-1.jpg/1600*/
-	    /*http://www.siwallpaper.com/wp-content/uploads/2015/09/sky_hd_wallpaper.jpg*/
+http://41.media.tumblr.com/794bce60e0032a08df6256b108f9c4b2/tumblr_ng52d97UC71u57bnlo1_1280.jpg
+http://webneel.com/wallpaper/sites/default/files/images/04-2013/15-beach-sea-photography.jpg
+https://cdn.creativelive.com/fit/https%3A%2F%2Fcdn.creativelive.com%2Fagc%2Fcourses%2F5842-1.jpg/1600
+http://www.siwallpaper.com/wp-content/uploads/2015/09/sky_hd_wallpaper.jpg
+http://www.bearvalleymusicfestival.org/wp-content/themes/banda/app/assets/css/images/light-linen-bg-tile.jpg
 
-				/*http://41.media.tumblr.com/794bce60e0032a08df6256b108f9c4b2/tumblr_ng52d97UC71u57bnlo1_1280.jpg*/
-		    /*http://webneel.com/wallpaper/sites/default/files/images/04-2013/15-beach-sea-photography.jpg*/
-		    /*https://cdn.creativelive.com/fit/https%3A%2F%2Fcdn.creativelive.com%2Fagc%2Fcourses%2F5842-1.jpg/1600*/
-		    /*http://www.siwallpaper.com/wp-content/uploads/2015/09/sky_hd_wallpaper.jpg*/
-		    /*http://www.bearvalleymusicfestival.org/wp-content/themes/banda/app/assets/css/images/light-linen-bg-tile.jpg*/
+*/
