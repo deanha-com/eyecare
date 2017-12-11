@@ -92,7 +92,6 @@
 		jQuery('nav label').click(function() {
 				// console.log(this.id);		
 				if ($("#app-" + this.id).hasClass('active')) {
-					console.warn(this.id+'has class ACTIVE');
 					$("#app-" + this.id).toggle();
 				} else {
 					$(".apptext").removeClass('active').hide();
