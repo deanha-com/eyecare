@@ -43,7 +43,8 @@
 
 	<nav class="menu">
 		<ul>
-			<li><a href="#" data-content="app"><i class="icofont-info-circle icofont-2x"></i></a></li>
+			<li><a href="#" data-content="about"><i class="icofont-info-circle icofont-2x"></i></a></li>
+			<li><a href="#" data-content="setting"><i class="icofont-gear icofont-2x"></i></a></li>
 			<!-- <li><a href="#" data-content="about">About</a></li> -->
 		</ul>
 	</nav>
@@ -70,6 +71,32 @@
 				additional dialogs'</u> as it will stop the application from running. However, if you devicetype so by accident, then
 			you will need to exit and restart the app.
 		</p>
+	</div>
+	<div class="content" id="setting">
+		<div class="row">
+			<h2>Setting options here</h2>
+			<hr>
+
+				<ul id="apps-list" class="settings-list options-list">
+					<li class="slide-toggle" data-related-widget="linksVisible" data-test="settings-general-links">
+						<input type="checkbox">
+						<span class="setting-name">Links</span>
+						<span class="toggle-slider"></span>
+					</li>
+					<li class="slide-toggle" data-related-widget="bookmarksVisible" data-test="settings-general-bookmarks-bar">
+						<input type="checkbox">
+						<span class="setting-name">Bookmarks Bar</span>
+						<span class="toggle-slider"></span>
+						<!-- TODO combine nicknameConfigLable w configLabel -->
+					</li>
+					<li class="slide-toggle on" data-related-widget="searchVisible" data-test="settings-general-search">
+						<input type="checkbox">
+						<span class="setting-name">Search</span>
+						<span class="toggle-slider"></span>			
+						<!-- TODO combine nicknameConfigLable w configLabel -->
+					</li>
+				</ul>
+		</div>
 	</div>
 
 	<footer>
@@ -102,7 +129,7 @@
 		var $this = $(this);
 		$this.on("click", function () {
 			console.warn($(this).data('content'));
-			$('.content').toggle();
+			// $('.content').toggle();
 			$('#' + $(this).data('content')).toggle();
 		});
 	});
@@ -178,8 +205,8 @@
 	var i = Math.floor(Math.random() * r_text.length);
 
 	// SETING MODE TIMER
-	var mobileMode = 2 * (60 * 1000); // in minutes
-	var desktopMode = 1 * (60 * 1000);
+	var mobileMode = 5 * (60 * 1000); // in minutes
+	var desktopMode = 10 * (60 * 1000);
 	var activeMode;
 
 	if ($(window).width() < 960) {
@@ -289,6 +316,7 @@
 		margin: 0 auto;
 		margin-bottom: 20px;
 		z-index: 1;
+		border-radius: 9px;
 	}
 
 	.text-center {
@@ -350,16 +378,46 @@
 	}
 
 
+	.row div {
+		float: left;
+		padding: 5px;
+	}
+
+	#about {
+		box-shadow: 0px 10px 45px -10px #525252;
+	}
+
+
 	#about:after{
 		content: " ";
 		background: #95c85b;
 		position: absolute;
 		top: -5px;
-		right: 15px;
+		right: 54px;
 		width: 15px;
 		height: 15px;
 		transform: rotate(45deg);
 	}
+
+	#setting {
+		background: #00ade7;
+		box-shadow: 0px 10px 45px -10px #525252;
+		max-width: 100%;
+		width: 600px;
+	}
+
+	#setting:after{
+		content: " ";
+		background: #00ade7;
+		position: absolute;
+		top: -5px;
+		right: 8px;
+		width: 15px;
+		height: 15px;
+		transform: rotate(45deg);
+	}
+
+
 
 	@media only screen and (max-width: 1024px) {
 		#countup {
@@ -377,7 +435,7 @@
 
 	nav.menu {
 		position: fixed;
-		right: 10px;
+		right: 15px;
 		top: 10px;
 	}
 
@@ -392,7 +450,7 @@
 
 	nav.menu ul li,
 	nav.menu a {
-		color: #92c558;
+		color: rgba(0, 0, 0, 0.24);
 		list-style: none;
 		display: inline;
 		margin-left: 5px;
