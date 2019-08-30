@@ -173,7 +173,7 @@
 		}, 1000);
 	}
 
-	// window.onbeforeunload = confirmExit;
+	window.onbeforeunload = confirmExit;
 	function confirmExit() {
 		return "You have attempted to leave this page. If you leave now the app won't be able alert you anymore. Are you sure you want to exit this page?";
 	}
@@ -187,6 +187,7 @@
 		} else {
 			start();
 		};
+		
 	});
 
 	// ARRAY OF DIFFERENT QUOTES / TIPS
@@ -385,6 +386,7 @@
 
 	#about {
 		box-shadow: 0px 10px 45px -10px #525252;
+		right: 61px;
 	}
 
 
@@ -392,29 +394,41 @@
 		content: " ";
 		background: #95c85b;
 		position: absolute;
-		top: -5px;
-		right: 54px;
+		top: -7px;
+		right: 8px;
 		width: 15px;
 		height: 15px;
 		transform: rotate(45deg);
 	}
 
 	#setting {
-		background: #00ade7;
+		background: rgba(0, 0, 0, .9);
 		box-shadow: 0px 10px 45px -10px #525252;
 		max-width: 100%;
-		width: 600px;
+		right: 15px;
 	}
 
 	#setting:after{
 		content: " ";
-		background: #00ade7;
+		background: rgba(0, 0, 0, .9);
 		position: absolute;
-		top: -5px;
+		top: -7px;
 		right: 8px;
 		width: 15px;
 		height: 15px;
 		transform: rotate(45deg);
+	}
+
+	ul#apps-list {
+		list-style: none;
+		padding: 0;
+	}
+
+	/* Gradient transparent - color - transparent */
+	hr {
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(230, 230, 230, 0.75), rgba(0, 0, 0, 0));
 	}
 
 
